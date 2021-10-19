@@ -1,6 +1,8 @@
-import React from "react";
+import React, {lazy} from "react";
 import "../styles/index.scss";
 import { Link, Route, Router, Switch } from "wouter";
+
+const About = lazy(() => import("./About"));
 
 export const App: React.VFC = () => (
   <Router>
@@ -23,7 +25,9 @@ export const App: React.VFC = () => (
         renders the first one that matches the current URL. */}
     <Switch>
       <Route path="/about">
-        <About />
+        <React.Suspense fallback="loading...">
+          <About />
+        </React.Suspense>
       </Route>
       <Route path="/users">
         <Users />
@@ -38,10 +42,6 @@ export const App: React.VFC = () => (
 
 function Home() {
   return <h2>Home</h2>;
-}
-
-function About() {
-  return <h2>About</h2>;
 }
 
 function Users() {
