@@ -1,5 +1,6 @@
 import React from "react";
+import "../styles/index.scss";
 
 export const App: React.VFC = () => (
-  <div>App だよ!!!</div>
+  <div><p>App だよ!!!</p></div>
 )
